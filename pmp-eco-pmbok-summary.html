@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMP 2026 — ECO × PMBOK 8 | الملخص الذهبي</title>
+<style>
+:root{
+  --ink:#1B1035;          /* deep aubergine */
+  --royal:#4B2E83;        /* PMI-style purple */
+  --violet:#6C4AB6;
+  --lilac:#EFE9FB;
+  --gold:#C9A227;         /* accent */
+  --gold-soft:#F6EBC8;
+  --paper:#FBFAF7;
+  --card:#FFFFFF;
+  --teal:#0E7C7B;
+  --rose:#B23A48;
+  --slate:#5B5470;
+  --ok:#1E7B4F;
+  --radius:14px;
+  --shadow:0 8px 26px rgba(27,16,53,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI', Tahoma, 'Sakkal Majalla', Arial, sans-serif;
+  background:var(--paper); color:var(--ink); line-height:1.75;
+}
+/* ---------- language switching ---------- */
+body[data-lang="ar"] .en{display:none !important}
+body[data-lang="en"] .ar{display:none !important}
+body[data-lang="en"]{direction:ltr}
+body[data-lang="en"] .flip-ltr{direction:ltr;text-align:left}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  background:linear-gradient(90deg,var(--ink),var(--royal));
+  color:#fff;display:flex;align-items:center;gap:14px;
+  padding:10px 22px;flex-wrap:wrap;box-shadow:var(--shadow);
+}
+.brand{font-weight:800;font-size:1.02rem;letter-spacing:.3px}
+.brand .g{color:var(--gold)}
+.nav{display:flex;gap:4px;flex-wrap:wrap;margin-inline-start:auto}
+.nav a{
+  color:#EDE7FA;text-decoration:none;font-size:.83rem;padding:6px 11px;
+  border-radius:999px;transition:.2s;
+}
+.nav a:hover,.nav a:focus-visible{background:rgba(255,255,255,.14);outline:none}
+.lang-btn{
+  border:1.5px solid var(--gold);background:transparent;color:var(--gold);
+  border-radius:999px;padding:6px 16px;font-weight:700;cursor:pointer;
+  font-family:inherit;font-size:.85rem;transition:.2s;
+}
+.lang-btn:hover{background:var(--gold);color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{
+  background:
+    radial-gradient(1000px 400px at 85% -10%, rgba(201,162,39,.22), transparent 60%),
+    linear-gradient(135deg,var(--ink) 0%, var(--royal) 55%, var(--violet) 100%);
+  color:#fff;padding:58px 22px 130px;position:relative;overflow:hidden;
+}
+.hero::after{ /* PMI-triangle motif */
+  content:"";position:absolute;inset-inline-end:-60px;bottom:-90px;width:340px;height:340px;
+  background:linear-gradient(200deg, rgba(201,162,39,.35), rgba(108,74,182,.15));
+  clip-path:polygon(50% 100%, 0 0, 100% 0);opacity:.5;
+}
+.wrap{max-width:1080px;margin:0 auto;position:relative;z-index:2}
+.eyebrow{
+  display:inline-block;background:rgba(201,162,39,.16);border:1px solid rgba(201,162,39,.55);
+  color:var(--gold-soft);padding:5px 16px;border-radius:999px;font-size:.82rem;font-weight:700;
+  letter-spacing:.4px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(1.7rem,4.4vw,2.9rem);font-weight:900;line-height:1.35;margin-bottom:12px}
+.hero h1 .g{color:var(--gold)}
+.hero p.sub{max-width:760px;color:#E4DDF5;font-size:1.03rem}
+.hero-facts{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.fact{
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
+  border-radius:var(--radius);padding:10px 18px;font-size:.9rem;backdrop-filter:blur(4px);
+}
+.fact b{color:var(--gold);font-size:1.15rem;display:block}
+
+/* ---------- domain weight bar (signature) ---------- */
+.weights{
+  max-width:1080px;margin:-78px auto 0;position:relative;z-index:5;padding:0 22px;
+}
+.weights-card{
+  background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:26px 26px 22px;
+}
+.weights-card h2{font-size:1.05rem;color:var(--royal);margin-bottom:16px}
+.bar{display:flex;height:56px;border-radius:12px;overflow:hidden;font-weight:800;color:#fff}
+.bar div{display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:.85rem;transition:flex .6s}
+.bar .b1{flex:33;background:linear-gradient(180deg,#6C4AB6,#4B2E83)}
+.bar .b2{flex:41;background:linear-gradient(180deg,#C9A227,#A5821B)}
+.bar .b3{flex:26;background:linear-gradient(180deg,#0E7C7B,#0A5C5B)}
+.bar span{font-size:1.05rem}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:.85rem;color:var(--slate)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-inline-end:6px}
+.split-note{
+  margin-top:14px;background:var(--lilac);border-inline-start:4px solid var(--violet);
+  padding:10px 16px;border-radius:8px;font-size:.88rem;
+}
+
+/* ---------- sections ---------- */
+section{max-width:1080px;margin:0 auto;padding:54px 22px 10px}
+.sec-head{margin-bottom:24px}
+.sec-head .kicker{color:var(--gold);font-weight:800;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase}
+.sec-head h2{font-size:clamp(1.35rem,3vw,1.9rem);color:var(--ink);font-weight:900}
+.sec-head p{color:var(--slate);max-width:820px;font-size:.95rem}
+
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+
+.card{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:20px 20px 18px;border-top:4px solid transparent;
+}
+.card h3{font-size:1rem;margin-bottom:8px;color:var(--royal)}
+.card p, .card li{font-size:.88rem;color:#3E3654}
+.card ul{padding-inline-start:18px}
+.chip{
+  display:inline-block;font-size:.72rem;font-weight:700;border-radius:999px;
+  padding:2.5px 11px;margin:2px 2px 2px 0;
+}
+.chip.pd{background:var(--lilac);color:var(--royal)}
+.chip.pr{background:var(--gold-soft);color:#7A5E0E}
+.chip.fa{background:#E3F2F1;color:var(--teal)}
+
+/* mindset dims */
+.dim{border-top-color:var(--violet)}
+.dim .num{
+  width:42px;height:42px;border-radius:50%;background:var(--lilac);color:var(--royal);
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.1rem;margin-bottom:10px;
+}
+
+/* principle cards */
+.pri{border-top-color:var(--gold)}
+
+/* ---------- ECO domain blocks ---------- */
+.dom{border-radius:18px;padding:26px 24px;margin-bottom:26px;background:var(--card);box-shadow:var(--shadow)}
+.dom-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.dom-badge{
+  color:#fff;font-weight:900;border-radius:12px;padding:10px 18px;font-size:1rem;min-width:96px;text-align:center;
+}
+.dom1 .dom-badge{background:linear-gradient(135deg,#6C4AB6,#4B2E83)}
+.dom2 .dom-badge{background:linear-gradient(135deg,#C9A227,#A5821B)}
+.dom3 .dom-badge{background:linear-gradient(135deg,#0E7C7B,#0A5C5B)}
+.dom-head h3{font-size:1.25rem;font-weight:900}
+.dom-head .pct{margin-inline-start:auto;font-weight:900;font-size:1.6rem}
+.dom1 .pct{color:#6C4AB6}.dom2 .pct{color:#A5821B}.dom3 .pct{color:#0E7C7B}
+.dom-sub{color:var(--slate);font-size:.9rem;margin-bottom:16px}
+
+details.task{
+  border:1px solid #EAE5F5;border-radius:12px;margin-bottom:10px;background:#FDFCFA;overflow:hidden;
+}
+details.task summary{
+  cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;
+  padding:13px 16px;font-weight:700;font-size:.93rem;transition:.2s;
+}
+details.task summary::-webkit-details-marker{display:none}
+details.task summary:hover{background:var(--lilac)}
+.t-num{
+  flex-shrink:0;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:.8rem;font-weight:800;
+}
+.dom1 .t-num{background:#6C4AB6}.dom2 .t-num{background:#B08D1D}.dom3 .t-num{background:#0E7C7B}
+.t-arrow{margin-inline-start:auto;color:var(--slate);transition:.25s;font-size:.8rem}
+details[open] .t-arrow{transform:rotate(90deg)}
+.t-body{padding:4px 18px 16px;border-top:1px dashed #E2DCF2;font-size:.87rem}
+.t-body .row{margin-top:10px}
+.t-body .lbl{font-weight:800;font-size:.78rem;color:var(--royal);letter-spacing:.3px}
+.tip{
+  background:var(--gold-soft);border-inline-start:4px solid var(--gold);
+  border-radius:8px;padding:8px 12px;margin-top:10px;font-size:.85rem;
+}
+.ex{
+  background:#EAF4F1;border-inline-start:4px solid var(--teal);
+  border-radius:8px;padding:8px 12px;margin-top:10px;font-size:.85rem;
+}
+
+/* ---------- mapping table ---------- */
+.map-table{width:100%;border-collapse:collapse;font-size:.86rem;background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.map-table th{background:var(--royal);color:#fff;padding:11px 12px;text-align:start;font-size:.83rem}
+.map-table td{padding:10px 12px;border-bottom:1px solid #F0EDF8;vertical-align:top}
+.map-table tr:nth-child(even) td{background:#FBF9FF}
+.table-scroll{overflow-x:auto;border-radius:14px}
+
+/* ---------- case study ---------- */
+.case{
+  background:linear-gradient(135deg,#221443,#3A2570);color:#fff;border-radius:18px;
+  padding:28px 26px;box-shadow:var(--shadow);
+}
+.case h3{color:var(--gold);font-size:1.15rem;margin-bottom:10px}
+.case p{font-size:.92rem;color:#E8E2F7}
+.case .q-list{margin-top:16px;display:grid;gap:10px}
+.case .q-item{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 15px;font-size:.88rem}
+.case .q-item b{color:var(--gold-soft)}
+
+/* ---------- quiz ---------- */
+.q-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:16px}
+.q-card .q-dom{font-size:.72rem;font-weight:800;letter-spacing:.5px}
+.q-card h4{font-size:.95rem;margin:6px 0 12px;line-height:1.7}
+.opts{display:grid;gap:8px}
+.opt{
+  text-align:start;font-family:inherit;font-size:.88rem;border:1.5px solid #E4DEF4;background:#FBFAFF;
+  border-radius:10px;padding:10px 14px;cursor:pointer;transition:.15s;line-height:1.6;
+}
+.opt:hover{border-color:var(--violet);background:var(--lilac)}
+.opt.correct{border-color:var(--ok);background:#E7F5EE;font-weight:700}
+.opt.wrong{border-color:var(--rose);background:#FBEBED}
+.rationale{
+  display:none;margin-top:12px;background:var(--lilac);border-inline-start:4px solid var(--violet);
+  border-radius:8px;padding:10px 14px;font-size:.85rem;
+}
+.q-card.answered .rationale{display:block}
+.score-pill{
+  position:sticky;bottom:14px;margin:10px auto 0;width:max-content;background:var(--ink);color:#fff;
+  border-radius:999px;padding:8px 22px;font-size:.85rem;font-weight:700;box-shadow:var(--shadow);
+}
+.score-pill b{color:var(--gold)}
+
+/* ---------- golden tips ---------- */
+.gold-list{display:grid;gap:10px}
+.gold-item{
+  background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:13px 16px;
+  display:flex;gap:12px;align-items:flex-start;font-size:.89rem;
+}
+.gold-item .star{color:var(--gold);font-size:1.05rem;flex-shrink:0;margin-top:2px}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:64px;background:linear-gradient(90deg,var(--ink),var(--royal));color:#D9D2EC;
+  text-align:center;padding:26px 20px;font-size:.85rem;
+}
+footer .sig{color:var(--gold);font-weight:800;font-size:.95rem;margin-bottom:4px}
+
+@media (max-width:640px){
+  .hero{padding-bottom:150px}
+  .dom-head .pct{width:100%;margin-inline-start:0}
+  .nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body data-lang="ar">
+
+<!-- ======= TOP BAR ======= -->
+<div class="topbar">
+  <div class="brand">PMP<span class="g">×</span>2026 <span class="ar">| الملخص الذهبي</span><span class="en">| The Golden Summary</span></div>
+  <nav class="nav">
+    <a href="#exam"><span class="ar">الاختبار</span><span class="en">The Exam</span></a>
+    <a href="#pmbok"><span class="ar">PMBOK 8</span><span class="en">PMBOK 8</span></a>
+    <a href="#domains"><span class="ar">مجالات ECO</span><span class="en">ECO Domains</span></a>
+    <a href="#mapping"><span class="ar">المصفوفة</span><span class="en">Matrix</span></a>
+    <a href="#case"><span class="ar">حالة عملية</span><span class="en">Case Study</span></a>
+    <a href="#quiz"><span class="ar">أسئلة</span><span class="en">Quiz</span></a>
+  </nav>
+  <button class="lang-btn" onclick="toggleLang()"><span class="ar">EN — English</span><span class="en">AR — العربية</span></button>
+</div>
+
+<!-- ======= HERO ======= -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="ar">تحديث اختبار يوليو 2026 · ECO الجديد + PMBOK الإصدار الثامن</span><span class="en">July 2026 Exam Update · New ECO + PMBOK 8th Edition</span></span>
+    <h1>
+      <span class="ar">خريطتك الكاملة لاختبار <span class="g">PMP®‎ 2026</span><br>المهام من الـ ECO × المعرفة من الـ PMBOK</span>
+      <span class="en">Your Complete Map to the <span class="g">PMP® 2026</span> Exam<br>Tasks from the ECO × Knowledge from the PMBOK</span>
+    </h1>
+    <p class="sub">
+      <span class="ar">الـ ECO بيقولك "إيه اللي هيتقاس في الاختبار" (مجالات ومهام)، والـ PMBOK الثامن بيقولك "إزاي تفكر وتتصرف" (مبادئ، عقلية، مجالات أداء). الملخص ده بيربط الاتنين مع بعض بأمثلة عملية ونقاط اختبار وأسئلة تفاعلية.</span>
+      <span class="en">The ECO tells you <em>what</em> the exam measures (domains &amp; tasks), while PMBOK 8 tells you <em>how</em> to think and act (principles, mindset, performance domains). This summary links both — with practical examples, exam points, and interactive questions.</span>
+    </p>
+    <div class="hero-facts">
+      <div class="fact"><b>185</b><span class="ar">سؤال (منهم 10 تجريبية غير محسوبة)</span><span class="en">questions (10 unscored pretest)</span></div>
+      <div class="fact"><b>240</b><span class="ar">دقيقة + استراحتان 5 دقائق</span><span class="en">minutes + two 5-min breaks</span></div>
+      <div class="fact"><b>40 / 60</b><span class="ar">تنبؤي ٪ / رشيق وهجين ٪</span><span class="en">Predictive % / Agile &amp; Hybrid %</span></div>
+      <div class="fact"><b>8</b><span class="ar">أنواع أسئلة (منها الحالة الدراسية الجديدة)</span><span class="en">question types (incl. new Case/Scenario)</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ======= DOMAIN WEIGHTS (signature) ======= -->
+<div class="weights">
+  <div class="weights-card">
+    <h2><span class="ar">وزن كل مجال في الاختبار — احفظها زي اسمك</span><span class="en">Domain Weights — Know Them by Heart</span></h2>
+    <div class="bar" aria-label="Domain weights">
+      <div class="b1"><span>33%</span><span class="ar">الأشخاص</span><span class="en">People</span></div>
+      <div class="b2"><span>41%</span><span class="ar">العمليات</span><span class="en">Process</span></div>
+      <div class="b3"><span>26%</span><span class="ar">بيئة الأعمال</span><span class="en">Business Env.</span></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:#6C4AB6"></i><span class="ar">المجال الأول: الأشخاص — 8 مهام</span><span class="en">Domain I: People — 8 tasks</span></span>
+      <span><i style="background:#C9A227"></i><span class="ar">المجال الثاني: العمليات — 10 مهام</span><span class="en">Domain II: Process — 10 tasks</span></span>
+      <span><i style="background:#0E7C7B"></i><span class="ar">المجال الثالث: بيئة الأعمال — 8 مهام</span><span class="en">Domain III: Business Environment — 8 tasks</span></span>
+    </div>
+    <div class="split-note">
+      <span class="ar">⚖️ المناهج (تنبؤي / رشيق / هجين) موزّعة على المجالات الثلاثة كلها — مفيش مجال "أجايل" لوحده. تقريبًا 40% تنبؤي و60% رشيق وهجين.</span>
+      <span class="en">⚖️ Approaches (predictive / agile / hybrid) are spread across all three domains — there is no separate "agile" domain. Roughly 40% predictive and 60% agile &amp; hybrid.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ======= EXAM FACTS ======= -->
+<section id="exam">
+  <div class="sec-head">
+    <div class="kicker"><span class="ar">معلومات الاختبار</span><span class="en">Exam Information</span></div>
+    <h2><span class="ar">شكل اختبار يوليو 2026 — إيه اللي اتغيّر؟</span><span class="en">The July 2026 Exam Format — What Changed?</span></h2>
+  </div>
+  <div class="grid g3">
+    <div class="card" style="border-top-color:var(--violet)">
+      <h3><span class="ar">🧩 هيكل الأسئلة</span><span class="en">🧩 Question Structure</span></h3>
+      <ul>
+        <li><span class="ar">175 سؤالًا محسوبًا + 10 أسئلة تجريبية موزعة عشوائيًا.</span><span class="en">175 scored + 10 pretest questions placed randomly.</span></li>
+        <li><span class="ar">استراحة أولى بعد قسم الحالة الدراسية، وثانية في منتصف الأسئلة المستقلة.</span><span class="en">First break after the case-study section; second midway through independent questions.</span></li>
+        <li><span class="ar">⚠️ بعد ما تبدأ الاستراحة مينفعش ترجع للقسم اللي فات.</span><span class="en">⚠️ Once a break starts, you cannot return to the previous section.</span></li>
+      </ul>
+    </div>
+    <div class="card" style="border-top-color:var(--gold)">
+      <h3><span class="ar">🆕 أنواع الأسئلة الجديدة</span><span class="en">🆕 New Question Types</span></h3>
+      <ul>
+        <li><span class="ar"><b>حالة/سيناريو (جديد):</b> سيناريو مفصّل بمخططات، تليه سلسلة أسئلة — بكل وسائل الاختبار.</span><span class="en"><b>Case/Scenario (NEW):</b> detailed scenario with visuals, followed by a series of questions — all modalities.</span></li>
+        <li><span class="ar"><b>أسئلة رسومية (جديد):</b> تفسير مخططات وصور ثم الإجابة.</span><span class="en"><b>Graphic-based (NEW):</b> interpret charts/images then answer.</span></li>
+        <li><span class="ar">بجانب: اختيار مفرد/متعدد، مطابقة، مطابقة محسّنة، نقر على صورة، قوائم منسدلة (بعضها CBT فقط).</span><span class="en">Plus: single/multiple choice, matching, enhanced matching, point-and-click, pull-down lists (some CBT-only).</span></li>
+      </ul>
+    </div>
+    <div class="card" style="border-top-color:var(--teal)">
+      <h3><span class="ar">📈 اتجاهات جديدة في المحتوى</span><span class="en">📈 New Content Trends</span></h3>
+      <ul>
+        <li><span class="ar">الذكاء الاصطناعي (AI) والاستدامة دخلوا رسميًا كاتجاهات مؤثرة في تحليل مهام الوظيفة (JTA).</span><span class="en">AI and sustainability formally entered the Job Task Analysis (JTA) as validated trends.</span></li>
+        <li><span class="ar">تعريف النجاح اتوسّع: مش بس نطاق/وقت/تكلفة — لكن "قيمة تستحق الجهد والتكلفة".</span><span class="en">Success redefined: beyond scope/time/cost — value worth the effort and expense.</span></li>
+        <li><span class="ar">إعادة المحاولة: حتى 3 مرات خلال سنة الأهلية.</span><span class="en">Retakes: up to 3 attempts within the 1-year eligibility period.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PMBOK 8 ======= -->
+<section id="pmbok">
+  <div class="sec-head">
+    <div class="kicker">PMBOK® Guide — 8th Edition</div>
+    <h2><span class="ar">عقلية ومعرفة PMBOK الإصدار الثامن</span><span class="en">The PMBOK 8 Mindset &amp; Knowledge</span></h2>
+    <p><span class="ar">الإصدار الثامن بسّط الصورة: عقلية من 3 أبعاد، 6 مبادئ عملية، عودة مجموعات العمليات في شكل 5 مناطق تركيز، و7 مجالات أداء. دي "خلفيتك المعرفية" اللي بتحل بيها مهام الـ ECO.</span>
+    <span class="en">The 8th edition simplified the picture: a 3-dimension mindset, 6 actionable principles, Process Groups reborn as 5 Focus Areas, and 7 Performance Domains. This is the knowledge base you use to solve ECO tasks.</span></p>
+  </div>
+
+  <h3 style="margin-bottom:12px;color:var(--royal)"><span class="ar">① عقلية مدير المشروع — 3 أبعاد</span><span class="en">① The PM Mindset — 3 Dimensions</span></h3>
+  <div class="grid g3" style="margin-bottom:34px">
+    <div class="card dim"><div class="num">1</div><h3><span class="ar">استباقي Proactive</span><span class="en">Proactive</span></h3><p><span class="ar">تشوف الصورة الكاملة وتتحرك قبل المشكلة: نظرة شمولية + جودة مدمجة + استدامة.</span><span class="en">See the whole picture and act before problems: holistic view + embedded quality + sustainability.</span></p></div>
+    <div class="card dim"><div class="num">2</div><h3><span class="ar">امتلاك Ownership</span><span class="en">Ownership</span></h3><p><span class="ar">تتحمّل المسؤولية وتبني ثقافة تمكّن الفريق: قيادة مسؤولة + ثقافة ممكّنة.</span><span class="en">Take responsibility and empower the team: accountable leadership + empowered culture.</span></p></div>
+    <div class="card dim"><div class="num">3</div><h3><span class="ar">موجّه بالقيمة Value-Driven</span><span class="en">Value-Driven</span></h3><p><span class="ar">كل قرار يتقاس بالقيمة اللي بيحققها للمستفيدين — مش بس التسليم في الموعد.</span><span class="en">Every decision is measured by the value it creates — not just on-time delivery.</span></p></div>
+  </div>
+
+  <h3 style="margin-bottom:12px;color:var(--royal)"><span class="ar">② المبادئ الستة</span><span class="en">② The Six Principles</span></h3>
+  <div class="grid g3" style="margin-bottom:34px">
+    <div class="card pri"><h3><span class="ar">🔭 تبنَّ نظرة شمولية</span><span class="en">🔭 Adopt a Holistic View</span></h3><p><span class="ar">المشروع نظام مترابط: قرار في الجدول يأثر على التكلفة والمخاطر وأصحاب المصلحة.</span><span class="en">A project is an interconnected system: a schedule decision ripples into cost, risk, and stakeholders.</span></p></div>
+    <div class="card pri"><h3><span class="ar">💎 ركّز على القيمة</span><span class="en">💎 Focus on Value</span></h3><p><span class="ar">القيمة هي مقياس النجاح النهائي — راجعها باستمرار مع الرعاة والمستفيدين.</span><span class="en">Value is the ultimate success measure — revisit it continuously with sponsors and users.</span></p></div>
+    <div class="card pri"><h3><span class="ar">✅ ادمج الجودة في العمليات والمخرجات</span><span class="en">✅ Embed Quality Into Processes &amp; Deliverables</span></h3><p><span class="ar">الجودة تُبنى من البداية، مش تُفتَّش في الآخر (الوقاية أرخص من الفحص).</span><span class="en">Quality is built in from the start, not inspected at the end (prevention over inspection).</span></p></div>
+    <div class="card pri"><h3><span class="ar">🧭 كن قائدًا مسؤولًا</span><span class="en">🧭 Be an Accountable Leader</span></h3><p><span class="ar">أخلاقيات، شفافية، وملكية للنتائج — حتى لما تكون الأخبار وحشة.</span><span class="en">Ethics, transparency, and owning outcomes — even when the news is bad.</span></p></div>
+    <div class="card pri"><h3><span class="ar">🌱 ادمج الاستدامة في كل مجالات المشروع</span><span class="en">🌱 Integrate Sustainability Within All Project Areas</span></h3><p><span class="ar">مبدأ جديد بالكامل: الأثر البيئي والاجتماعي والاقتصادي جزء من التخطيط والجودة والمخاطر.</span><span class="en">Entirely new principle: environmental, social &amp; economic impact is part of planning, quality, and risk.</span></p></div>
+    <div class="card pri"><h3><span class="ar">🤝 ابنِ ثقافة ممكّنة</span><span class="en">🤝 Build an Empowered Culture</span></h3><p><span class="ar">فرق مفوّضة وآمنة نفسيًا بتقرر أسرع وبتبدع أكتر.</span><span class="en">Empowered, psychologically safe teams decide faster and innovate more.</span></p></div>
+  </div>
+
+  <h3 style="margin-bottom:12px;color:var(--royal)"><span class="ar">③ مناطق التركيز الخمسة (عودة مجموعات العمليات)</span><span class="en">③ The Five Focus Areas (Process Groups Reimagined)</span></h3>
+  <div class="grid g3" style="margin-bottom:34px">
+    <div class="card" style="border-top-color:var(--teal)"><h3><span class="ar">🚀 البدء</span><span class="en">🚀 Initiating</span></h3><p><span class="ar">تعريف المشروع والتفويض الرسمي وتحديد أصحاب المصلحة الأوائل.</span><span class="en">Define and authorize the project; identify initial stakeholders.</span></p></div>
+    <div class="card" style="border-top-color:var(--teal)"><h3><span class="ar">🗺️ التخطيط</span><span class="en">🗺️ Planning</span></h3><p><span class="ar">نطاق، جدول، تمويل، موارد، مخاطر — خطة متكاملة قابلة للتكييف.</span><span class="en">Scope, schedule, finance, resources, risk — one integrated, tailorable plan.</span></p></div>
+    <div class="card" style="border-top-color:var(--teal)"><h3><span class="ar">⚙️ التنفيذ</span><span class="en">⚙️ Executing</span></h3><p><span class="ar">قيادة الفريق وتنفيذ العمل وإدارة التواصل والمشتريات.</span><span class="en">Lead the team, perform the work, manage communication &amp; procurement.</span></p></div>
+    <div class="card" style="border-top-color:var(--teal)"><h3><span class="ar">📡 المراقبة والتحكم</span><span class="en">📡 Monitoring &amp; Controlling</span></h3><p><span class="ar">قياس الأداء مقابل الخطة والتحكم في التغييرات.</span><span class="en">Measure performance against the plan and control changes.</span></p></div>
+    <div class="card" style="border-top-color:var(--teal)"><h3><span class="ar">🏁 الإغلاق</span><span class="en">🏁 Closing</span></h3><p><span class="ar">قبول رسمي، دروس مستفادة، تسليم للعمليات.</span><span class="en">Formal acceptance, lessons learned, transition to operations.</span></p></div>
+  </div>
+
+  <h3 style="margin-bottom:12px;color:var(--royal)"><span class="ar">④ مجالات الأداء السبعة</span><span class="en">④ The Seven Performance Domains</span></h3>
+  <div class="grid g3">
+    <div class="card"><h3><span class="ar">🏛️ الحوكمة</span><span class="en">🏛️ Governance</span></h3><p><span class="ar">هياكل القرار، التصعيد، خلق القيمة، نماذج الحوكمة — أول مرة يبقى مجال أداء مستقل.</span><span class="en">Decision structures, escalation, value creation, governance models — a standalone domain for the first time.</span></p></div>
+    <div class="card"><h3><span class="ar">🎯 النطاق</span><span class="en">🎯 Scope</span></h3><p><span class="ar">تعريف النطاق وتفكيكه (WBS / Backlog) والاتفاق عليه مع أصحاب المصلحة.</span><span class="en">Define, break down (WBS / backlog), and agree scope with stakeholders.</span></p></div>
+    <div class="card"><h3><span class="ar">🗓️ الجدول الزمني</span><span class="en">🗓️ Schedule</span></h3><p><span class="ar">تقدير الأنشطة، المسار الحرج، الأساس المرجعي، وتحليل الانحرافات.</span><span class="en">Estimating, critical path, baselining, and variance analysis.</span></p></div>
+    <div class="card"><h3><span class="ar">💰 التمويل</span><span class="en">💰 Finance</span></h3><p><span class="ar">أوسع من "التكلفة": احتياجات مالية، احتياطيات، تقارير مالية، تحديات مستقبلية.</span><span class="en">Broader than "cost": financial needs, reserves, reporting, future challenges.</span></p></div>
+    <div class="card"><h3><span class="ar">👥 أصحاب المصلحة</span><span class="en">👥 Stakeholders</span></h3><p><span class="ar">تحديد وتحليل وإشراك مستمر وبناء ثقة.</span><span class="en">Identify, analyze, continuously engage, and build trust.</span></p></div>
+    <div class="card"><h3><span class="ar">🧰 الموارد</span><span class="en">🧰 Resources</span></h3><p><span class="ar">الفريق والموارد المادية والمشتريات وتطوير القدرات.</span><span class="en">Team, physical resources, procurement, and capability development.</span></p></div>
+    <div class="card"><h3><span class="ar">⚠️ المخاطر</span><span class="en">⚠️ Risk</span></h3><p><span class="ar">تهديدات وفرص، تحليل نوعي وكمي، استجابات واحتياطيات.</span><span class="en">Threats &amp; opportunities, qualitative/quantitative analysis, responses &amp; reserves.</span></p></div>
+  </div>
+</section>
+
+<!-- ======= ECO DOMAINS ======= -->
+<section id="domains">
+  <div class="sec-head">
+    <div class="kicker"><span class="ar">مهام الاختبار</span><span class="en">Exam Tasks</span></div>
+    <h2><span class="ar">مجالات ومهام الـ ECO 2026 — مربوطة بالـ PMBOK</span><span class="en">ECO 2026 Domains &amp; Tasks — Linked to PMBOK</span></h2>
+    <p><span class="ar">افتح أي مهمة تشوف: خلاصة المهمة، مجال الأداء المرتبط في PMBOK، مثال عملي، ونقطة اختبار ذهبية.</span><span class="en">Open any task to see: the task in a nutshell, its linked PMBOK performance domain, a practical example, and a golden exam point.</span></p>
+  </div>
+
+  <!-- ===== DOMAIN I ===== -->
+  <div class="dom dom1">
+    <div class="dom-head">
+      <div class="dom-badge"><span class="ar">المجال I</span><span class="en">Domain I</span></div>
+      <h3><span class="ar">الأشخاص People</span><span class="en">People</span></h3>
+      <div class="pct">33%</div>
+    </div>
+    <p class="dom-sub"><span class="ar">8 مهام — القيادة، الفريق، وأصحاب المصلحة. مرتبط أساسًا بمجالي: أصحاب المصلحة والموارد + مبدأي القيادة المسؤولة والثقافة الممكّنة.</span><span class="en">8 tasks — leadership, team, and stakeholders. Primarily linked to the Stakeholders &amp; Resources domains + the Accountable Leader and Empowered Culture principles.</span></p>
+
+    <details class="task"><summary><span class="t-num">1</span><span class="ar">تطوير رؤية مشتركة</span><span class="en">Develop a common vision</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">ضمان رؤية مشتركة مع أصحاب المصلحة، الترويج لها، تحديثها، وتحليل جذور أي سوء فهم لها.</span><span class="en">Ensure a shared vision with key stakeholders, promote it, keep it current, and root-cause any misunderstanding.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Stakeholders</span><span class="chip pr"><span class="ar">مبدأ: القيمة</span><span class="en">Principle: Value</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: في مشروع تحول رقمي بوزارة، الفريق التقني فاهم إن الهدف "تطبيق جديد" والإدارة فاهمة إنه "تقليل زمن الخدمة 50%". مدير المشروع يعقد ورشة رؤية ويوثّق Vision Statement واحد.</span><span class="en">💼 Example: In a ministry digital-transformation project, the tech team thinks the goal is "a new app" while management thinks it's "50% faster service." The PM runs a vision workshop and documents one vision statement.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: لو فيه تعارض في فهم الهدف → أول خطوة "افهم السبب الجذري" مش "صعّد للراعي".</span><span class="en">⭐ Exam: if the goal is understood differently → first "find the root cause," don't "escalate to the sponsor."</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">2</span><span class="ar">إدارة النزاعات</span><span class="en">Manage conflicts</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تحديد مصادر النزاع وسياقه، تنفيذ استراتيجية حل متفق عليها، وقواعد أساسية (Ground Rules) يلتزم بيها الجميع.</span><span class="en">Identify conflict sources and context, apply an agreed resolution strategy, and enforce shared ground rules.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Resources</span><span class="chip pr"><span class="ar">مبدأ: ثقافة ممكّنة</span><span class="en">Principle: Empowered Culture</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: مهندسان مختلفان على أولوية مهمة في Sprint. المدير يجمعهم، يحلل السياق (تعارض موارد؟ أهداف؟)، ويستخدم "التعاون/حل المشكلة" مش "الفرض".</span><span class="en">💼 Example: two engineers disagree on a sprint task priority. The PM brings them together, analyzes the context (resources? goals?), and uses collaborate/problem-solve — not force.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: الإجابة الذهبية غالبًا Collaborate/Problem-solve. تجنّب Avoid وForce إلا في الطوارئ.</span><span class="en">⭐ Exam: the golden answer is usually Collaborate/Problem-solve. Avoid "Avoiding" and "Forcing" except in emergencies.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">3</span><span class="ar">قيادة فريق المشروع</span><span class="en">Lead the project team</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">وضع التوقعات، تمكين الفريق، حل المشكلات، تمثيل صوت الفريق، دعم التنوع، واختيار أسلوب القيادة المناسب للموقف.</span><span class="en">Set expectations, empower the team, solve problems, represent the team's voice, support diversity, and pick a situational leadership style.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Resources</span><span class="chip pr"><span class="ar">مبدأ: قائد مسؤول</span><span class="en">Principle: Accountable Leader</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: فريق جديد في مرحلة Storming — القائد يستخدم أسلوبًا توجيهيًا أكثر، ومع النضج يتحول لخادم-قائد (Servant Leader) يشيل العوائق.</span><span class="en">💼 Example: a new team in Storming — the leader is more directive; as the team matures, they shift to servant leadership, removing impediments.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: "التمكين والتفويض" دايمًا مفضّل على "القرار المركزي" — خصوصًا في السياق الرشيق.</span><span class="en">⭐ Exam: "empower &amp; delegate" beats "decide centrally" — especially in agile contexts.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">4</span><span class="ar">إشراك أصحاب المصلحة</span><span class="en">Engage stakeholders</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تحديد وتحليل أصحاب المصلحة، تفصيل التواصل حسب احتياجهم، تنفيذ خطة الإشراك، وبناء الثقة والتأثير.</span><span class="en">Identify &amp; analyze stakeholders, tailor communication, execute the engagement plan, and build trust and influence.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Stakeholders</span><span class="chip fa"><span class="ar">تركيز: التنفيذ</span><span class="en">Focus: Executing</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: مدير إدارة معارض للمشروع (سلطة عالية/اهتمام سلبي) → استراتيجية "أدر عن قرب": اجتماعات فردية، إشراكه مبكرًا في القرارات.</span><span class="en">💼 Example: a department head resists the project (high power / negative interest) → "manage closely": one-on-ones and early involvement in decisions.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: صاحب مصلحة معارض = اشركه وافهم مخاوفه، مش تتجاهله ولا تصعّد فورًا.</span><span class="en">⭐ Exam: a resistant stakeholder = engage and understand their concerns; don't ignore or instantly escalate.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">5</span><span class="ar">مواءمة توقعات أصحاب المصلحة</span><span class="en">Align stakeholder expectations</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تصنيف أصحاب المصلحة، تحديد توقعاتهم، تيسير نقاشات المواءمة، واستثمار فرص التوجيه (Mentoring).</span><span class="en">Categorize stakeholders, identify expectations, facilitate alignment discussions, and act on mentoring opportunities.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Stakeholders</span><span class="chip pr"><span class="ar">مبدأ: نظرة شمولية</span><span class="en">Principle: Holistic View</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: العميل متوقع تسليم شهري والراعي متوقع ربع سنوي → جلسة مواءمة توثّق إيقاع تسليم واحد متفق عليه في خطة الإشراك.</span><span class="en">💼 Example: client expects monthly releases, sponsor expects quarterly → an alignment session documents one agreed delivery cadence.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: "يسّر نقاشًا" (Facilitate) كلمة مفتاحية قوية للإجابة الصحيحة هنا.</span><span class="en">⭐ Exam: "facilitate a discussion" is a strong correct-answer keyword here.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">6</span><span class="ar">إدارة توقعات أصحاب المصلحة</span><span class="en">Manage stakeholder expectations</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تحديد توقعات العملاء الداخليين والخارجيين، مواءمة النتائج معها، ومراقبة الرضا والاستجابة له باستمرار.</span><span class="en">Identify internal/external customer expectations, keep outcomes aligned, and continuously monitor and respond to satisfaction.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Stakeholders</span><span class="chip pr"><span class="ar">مبدأ: القيمة</span><span class="en">Principle: Value</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: استبيان رضا بعد كل Increment؛ لما ينخفض الرضا، المدير يحلل السبب ويعدّل الأولويات مع الـ Product Owner.</span><span class="en">💼 Example: satisfaction survey after each increment; when scores drop, the PM analyzes why and adjusts priorities with the Product Owner.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: الرضا يُراقب طوال المشروع — مش في الإغلاق بس.</span><span class="en">⭐ Exam: satisfaction is monitored throughout — not only at closure.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">7</span><span class="ar">ضمان نقل المعرفة</span><span class="en">Help ensure knowledge transfer</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تحديد المعرفة الحرجة للمشروع، جمعها، وتهيئة بيئة تشجع على تبادلها.</span><span class="en">Identify project-critical knowledge, gather it, and foster an environment for sharing it.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Resources</span><span class="chip fa"><span class="ar">تركيز: الإغلاق</span><span class="en">Focus: Closing</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: خبير أنظمة هيسيب الشركة بعد شهرين → جلسات Pair Working + توثيق في قاعدة معرفة + فيديوهات قصيرة قبل مغادرته.</span><span class="en">💼 Example: a systems expert leaves in two months → pair working, knowledge-base documentation, and short videos before departure.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: عضو فريق هيغادر = خطة نقل معرفة فورية، مش "استنى لحد ما يمشي".</span><span class="en">⭐ Exam: a departing member = immediate knowledge-transfer plan, not "wait until they leave."</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">8</span><span class="ar">تخطيط وإدارة التواصل</span><span class="en">Plan and manage communication</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">استراتيجية تواصل، شفافية وتعاون، حلقة تغذية راجعة، فهم متطلبات التقارير، وتقارير متوافقة مع توقعات الرعاة والحوكمة.</span><span class="en">A communication strategy, transparency &amp; collaboration, a feedback loop, reporting requirements, and reports aligned with sponsors &amp; governance.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Stakeholders</span><span class="chip pd">Governance</span></div>
+        <div class="ex"><span class="ar">💼 مثال: الراعي عايز ملخص تنفيذي شهري، والفريق محتاج Daily Standup، والـ PMO عايزة KPI Dashboard — خطة تواصل واحدة بتحدد (مين/إيه/إمتى/إزاي).</span><span class="en">💼 Example: the sponsor wants a monthly executive summary, the team needs daily standups, the PMO wants a KPI dashboard — one plan defines who/what/when/how.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: مشكلة تواصل متكررة = راجع/حدّث خطة إدارة التواصل أولًا.</span><span class="en">⭐ Exam: a recurring communication problem = review/update the communications management plan first.</span></div>
+      </div>
+    </details>
+  </div>
+
+  <!-- ===== DOMAIN II ===== -->
+  <div class="dom dom2">
+    <div class="dom-head">
+      <div class="dom-badge"><span class="ar">المجال II</span><span class="en">Domain II</span></div>
+      <h3><span class="ar">العمليات Process</span><span class="en">Process</span></h3>
+      <div class="pct">41%</div>
+    </div>
+    <p class="dom-sub"><span class="ar">10 مهام — المجال الأكبر. يغطي مجالات أداء PMBOK التقنية كلها: النطاق، الجدول، التمويل، الموارد، الجودة.</span><span class="en">10 tasks — the biggest domain. Covers all technical PMBOK performance domains: scope, schedule, finance, resources, quality.</span></p>
+
+    <details class="task"><summary><span class="t-num">1</span><span class="ar">تطوير خطة إدارة مشروع متكاملة وتخطيط التسليم</span><span class="en">Develop an integrated PM plan and plan delivery</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تقييم الاحتياجات والتعقيد، التوصية بمنهج التطوير (تنبؤي/رشيق/هجين)، تحديد المتطلبات الحرجة (مثل الاستدامة)، بناء الخطة المتكاملة وصيانتها، واتخاذ قرارات مبنية على البيانات.</span><span class="en">Assess needs &amp; complexity, recommend a development approach (predictive/agile/hybrid), determine critical requirements (e.g., sustainability), build &amp; maintain the integrated plan, and make data-driven decisions.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Governance</span><span class="chip fa"><span class="ar">تركيز: التخطيط</span><span class="en">Focus: Planning</span></span><span class="chip pr">Tailoring</span></div>
+        <div class="ex"><span class="ar">💼 مثال: مشروع مستشفى — البنية التحتية تنبؤية (متطلبات ثابتة ولوائح)، وتطبيق المرضى رشيق (متطلبات متغيرة) → منهج هجين موثّق في الخطة.</span><span class="en">💼 Example: a hospital project — infrastructure is predictive (fixed requirements, regulations) while the patient app is agile (evolving needs) → a documented hybrid approach.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: اختيار المنهج يعتمد على: وضوح المتطلبات، وتيرة التسليم، ثقافة المنظمة — مش تفضيل المدير الشخصي.</span><span class="en">⭐ Exam: approach selection depends on requirement clarity, delivery cadence, and org culture — not the PM's personal preference.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">2</span><span class="ar">تطوير وإدارة نطاق المشروع</span><span class="en">Develop and manage project scope</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تعريف النطاق، الحصول على موافقة أصحاب المصلحة، وتفكيكه (WBS في التنبؤي / Backlog في الرشيق).</span><span class="en">Define scope, obtain stakeholder agreement, and break it down (WBS in predictive / backlog in agile).</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Scope</span></div>
+        <div class="ex"><span class="ar">💼 مثال: عميل يطلب ميزة إضافية "بسيطة" شفهيًا → دي Scope Creep؛ الصح: قيّمها وادخلها عملية التحكم في التغيير.</span><span class="en">💼 Example: a client verbally asks for a "small" extra feature → that's scope creep; correct: assess it and route it through change control.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: أي تغيير نطاق في البيئة التنبؤية → Change Control. في الرشيقة → الـ Product Owner يرتب الـ Backlog.</span><span class="en">⭐ Exam: scope change in predictive → change control. In agile → the Product Owner reprioritizes the backlog.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">3</span><span class="ar">ضمان التسليم القائم على القيمة</span><span class="en">Help ensure value-based delivery</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تحديد مكونات القيمة مع أصحاب المصلحة، ترتيب العمل حسب القيمة، التسليم التدريجي، ونظام قياس لتتبع المنافع.</span><span class="en">Identify value components with stakeholders, prioritize by value, deliver incrementally, and verify a benefits-tracking system.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Governance</span><span class="chip pr"><span class="ar">مبدأ: القيمة</span><span class="en">Principle: Value</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: بدل تسليم النظام كله بعد سنة، الفريق يسلّم MVP لوحدة الفوترة (أعلى قيمة) في 3 شهور ويقيس العائد فعليًا.</span><span class="en">💼 Example: instead of delivering the full system after a year, the team ships a billing MVP (highest value) in 3 months and measures actual return.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: "قيمة مبكرة ومتكررة" تتفوق دائمًا على "تسليم كامل في النهاية" لما يكون التدرج ممكنًا.</span><span class="en">⭐ Exam: "early and frequent value" beats "big-bang delivery" whenever incremental delivery is possible.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">4</span><span class="ar">تخطيط وإدارة الموارد</span><span class="en">Plan and manage resources</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تحديد وتخطيط الموارد حسب المتطلبات، وإدارة وتحسين توافرها واحتياجاتها.</span><span class="en">Define and plan resources per requirements; manage and optimize their needs and availability.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Resources</span></div>
+        <div class="ex"><span class="ar">💼 مثال: مهندس أساسي محجوز 120% بين مشروعين → تسوية موارد (Resource Leveling) مع مدير الوظيفة قبل ما يحترق الجدول.</span><span class="en">💼 Example: a key engineer is booked 120% across two projects → resource leveling with the functional manager before the schedule burns.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: تعارض موارد في منظمة Matrix = تفاوض مع المدير الوظيفي أولًا.</span><span class="en">⭐ Exam: resource conflict in a matrix org = negotiate with the functional manager first.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">5</span><span class="ar">تخطيط وإدارة المشتريات</span><span class="en">Plan and manage procurement</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">خطة مشتريات، اختيار أنواع العقود، تقييم أداء الموردين، استراتيجية تفاوض، وإدارة العقود والموردين حتى تحقق أهداف الاتفاقية.</span><span class="en">Procurement plan, contract-type selection, vendor performance evaluation, negotiation strategy, and supplier/contract management until agreement objectives are met.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Resources</span></div>
+        <div class="ex"><span class="ar">💼 مثال: نطاق غير واضح المعالم → عقد Time &amp; Materials بسقف؛ نطاق محدد بدقة → Fixed Price لنقل المخاطرة للمورد.</span><span class="en">💼 Example: vague scope → capped Time &amp; Materials; precisely defined scope → Fixed Price to shift risk to the vendor.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: Fixed Price = مخاطرة على البائع، Cost-Plus = مخاطرة على المشتري. T&amp;M في النص.</span><span class="en">⭐ Exam: Fixed Price = seller's risk; Cost-Plus = buyer's risk; T&amp;M sits in between.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">6</span><span class="ar">تخطيط وإدارة التمويل</span><span class="en">Plan and manage finance</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تحليل الاحتياجات المالية، تحديد احتياطيات المخاطر والطوارئ، تتبع الإنفاق، التقارير المالية، ومراقبة الانحرافات مع الحوكمة.</span><span class="en">Analyze financial needs, quantify risk &amp; contingency reserves, track spend, plan financial reporting, and monitor variances with governance.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Finance</span><span class="chip pd">Governance</span></div>
+        <div class="ex"><span class="ar">💼 مثال: CPI = 0.85 يعني كل ريال بيرجع 85 هللة قيمة → حلّل السبب، وقدّم خيارات للحوكمة قبل طلب تمويل إضافي.</span><span class="en">💼 Example: CPI = 0.85 means each unit spent returns 0.85 of value → analyze causes and present options to governance before requesting more funds.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: احتياطي الطوارئ (Contingency) للمخاطر المعروفة وبيد المدير؛ الاحتياطي الإداري (Management) للمجهولة وبيد الإدارة.</span><span class="en">⭐ Exam: contingency reserve = known risks, PM-controlled; management reserve = unknowns, management-controlled.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">7</span><span class="ar">تخطيط وتحسين جودة المنتجات/المخرجات</span><span class="en">Plan and optimize quality of products/deliverables</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">جمع متطلبات الجودة، خطة وأدوات جودة، الامتثال التنظيمي، إدارة تكلفة الجودة (CoQ) والاستدامة، ومراجعات وتحسين مستمر.</span><span class="en">Gather quality requirements, plan quality processes/tools, ensure regulatory compliance, manage Cost of Quality &amp; sustainability, and run ongoing reviews with continuous improvement.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Scope + Governance</span><span class="chip pr"><span class="ar">مبدأ: جودة مدمجة</span><span class="en">Principle: Embedded Quality</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: عيوب متكررة في الاختبار النهائي → بدل زيادة المفتشين، أدخل مراجعات أثناء التطوير (الوقاية) وقلّل تكلفة الفشل.</span><span class="en">💼 Example: recurring defects at final testing → instead of more inspectors, add in-process reviews (prevention) and cut failure costs.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: تكلفة الوقاية &lt; تكلفة الفحص &lt; تكلفة الفشل الداخلي &lt; تكلفة الفشل الخارجي.</span><span class="en">⭐ Exam: prevention cost &lt; appraisal cost &lt; internal failure &lt; external failure.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">8</span><span class="ar">تخطيط وإدارة الجدول الزمني</span><span class="en">Plan and manage schedule</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">جدول حسب منهج التطوير المختار، تنسيق مع مشاريع وعمليات أخرى، تقدير المهام (معالم/اعتماديات/نقاط قصة)، اعتماد Baseline، وتحليل الانحرافات.</span><span class="en">Schedule per the chosen approach, coordinate with other projects/operations, estimate tasks (milestones/dependencies/story points), baseline it, and analyze variance.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Schedule</span></div>
+        <div class="ex"><span class="ar">💼 مثال: نشاط على المسار الحرج اتأخر أسبوع → Fast Tracking (توازي الأنشطة = مخاطرة أعلى) أو Crashing (موارد إضافية = تكلفة أعلى).</span><span class="en">💼 Example: a critical-path activity slips a week → fast-track (parallel work = more risk) or crash (extra resources = more cost).</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: التأخير خارج المسار الحرج (في حدود الـ Float) لا يؤخر المشروع — اقرأ السؤال كويس.</span><span class="en">⭐ Exam: delays off the critical path (within float) don't delay the project — read carefully.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">9</span><span class="ar">تقييم حالة المشروع</span><span class="en">Evaluate project status</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تطوير مقاييس وتحليلات، تحديد وتفصيل الأدوات/الوثائق (Artifacts) وضمان تحديثها وإتاحتها، قياس التقدم، وإيصال الحالة لأصحاب المصلحة.</span><span class="en">Develop metrics &amp; analysis, identify and tailor artifacts, keep them updated and accessible, assess progress, and communicate status.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Governance</span><span class="chip fa"><span class="ar">تركيز: المراقبة والتحكم</span><span class="en">Focus: Monitoring &amp; Controlling</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: في الرشيق: Burndown Chart وVelocity؛ في التنبؤي: EVM (SPI/CPI). المدير يختار الأداة المناسبة للمنهج والجمهور.</span><span class="en">💼 Example: agile uses burndown &amp; velocity; predictive uses EVM (SPI/CPI). The PM picks the artifact fitting the approach and audience.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: SPI &lt; 1 متأخر، CPI &lt; 1 متجاوز للميزانية — احفظ التفسير مش القانون بس.</span><span class="en">⭐ Exam: SPI &lt; 1 behind schedule, CPI &lt; 1 over budget — memorize the interpretation, not just the formula.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">10</span><span class="ar">إدارة إغلاق المشروع</span><span class="en">Manage project closure</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">موافقة أصحاب المصلحة على الاكتمال، معايير الإغلاق، التحقق من جاهزية الانتقال (للعمليات/المرحلة التالية)، وإنهاء الدروس المستفادة والمشتريات والماليات والموارد.</span><span class="en">Stakeholder approval of completion, closure criteria, transition-readiness validation (to operations/next phase), and concluding lessons learned, procurement, financials, resources.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Governance</span><span class="chip fa"><span class="ar">تركيز: الإغلاق</span><span class="en">Focus: Closing</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: مشروع اتلغى في المنتصف — برضه بيتقفل رسميًا: توثيق ما أُنجز، إنهاء العقود، دروس مستفادة، وأرشفة.</span><span class="en">💼 Example: a project cancelled midway is still formally closed: document work done, terminate contracts, capture lessons, archive.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: الإغلاق يحصل دايمًا — حتى للمشاريع الملغاة. والقبول الرسمي قبل تسريح الفريق.</span><span class="en">⭐ Exam: closure always happens — even for cancelled projects. Formal acceptance comes before releasing the team.</span></div>
+      </div>
+    </details>
+  </div>
+
+  <!-- ===== DOMAIN III ===== -->
+  <div class="dom dom3">
+    <div class="dom-head">
+      <div class="dom-badge"><span class="ar">المجال III</span><span class="en">Domain III</span></div>
+      <h3><span class="ar">بيئة الأعمال Business Environment</span><span class="en">Business Environment</span></h3>
+      <div class="pct">26%</div>
+    </div>
+    <p class="dom-sub"><span class="ar">8 مهام — وزنه زاد كثيرًا في نسخة 2026. الحوكمة والامتثال والتغيير والمخاطر — أرض دكتور محمد المفضلة في برامج الامتثال والتفتيش 😉.</span><span class="en">8 tasks — its weight grew significantly in 2026. Governance, compliance, change, and risk.</span></p>
+
+    <details class="task"><summary><span class="t-num">1</span><span class="ar">تحديد وتأسيس حوكمة المشروع</span><span class="en">Define and establish project governance</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">هيكل وقواعد وإجراءات وأخلاقيات وسياسات عبر أصول العمليات التنظيمية (OPAs)، مقاييس نجاح، ومسارات وعتبات تصعيد.</span><span class="en">Structure, rules, procedures, ethics &amp; policies via OPAs; success metrics; escalation paths and thresholds.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Governance</span><span class="chip fa"><span class="ar">تركيز: البدء</span><span class="en">Focus: Initiating</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: عتبة تصعيد موثقة: أي انحراف تكلفة أكبر من 10% يتصعّد للجنة التوجيهية — القرار مش مزاجي.</span><span class="en">💼 Example: a documented threshold: any cost variance above 10% escalates to the steering committee — not ad hoc.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: قرار خارج صلاحيتك = اتبع مسار التصعيد المحدد في الحوكمة، مش قرار فردي.</span><span class="en">⭐ Exam: a decision beyond your authority = follow the defined escalation path, not a solo call.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">2</span><span class="ar">تخطيط وإدارة امتثال المشروع</span><span class="en">Plan and manage project compliance</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تأكيد متطلبات الامتثال (أمن، صحة وسلامة، استدامة، لوائح)، تصنيف الفئات، تحديد التهديدات، تحليل عواقب عدم الامتثال، وقياس مدى الامتثال.</span><span class="en">Confirm compliance requirements (security, H&amp;S, sustainability, regulatory), classify categories, identify threats, analyze noncompliance consequences, and measure compliance.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Governance + Risk</span><span class="chip pr"><span class="ar">مبدأ: استدامة</span><span class="en">Principle: Sustainability</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: مشروع صحي يخضع لنظام المؤسسات الصحية الخاصة — سجل امتثال يصنف المتطلبات (إلزامي/توجيهي) ويقيس نسبة الالتزام دوريًا في لوحة متابعة.</span><span class="en">💼 Example: a healthcare project under private health facilities regulations — a compliance register classifies requirements (mandatory/guidance) and periodically measures adherence on a dashboard.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: الامتثال غير قابل للتفاوض — لا يدخل موازنة "تكلفة/منفعة" زي المتطلبات العادية.</span><span class="en">⭐ Exam: compliance is non-negotiable — it doesn't enter cost/benefit trade-offs like ordinary requirements.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">3</span><span class="ar">إدارة والتحكم في التغييرات</span><span class="en">Manage and control changes</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تنفيذ عملية التحكم في التغيير، إيصال حالة التغييرات المقترحة، تنفيذ المعتمد منها، وتحديث الوثائق.</span><span class="en">Execute change control, communicate proposed-change status, implement approved changes, and update documentation.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Governance</span></div>
+        <div class="ex"><span class="ar">💼 مثال: الراعي نفسه طلب تغييرًا كبيرًا شفهيًا → حتى طلب الراعي يتوثّق ويقيَّم أثره (نطاق/وقت/تكلفة/مخاطر) قبل الاعتماد.</span><span class="en">💼 Example: the sponsor verbally requests a major change → even sponsor requests get documented and impact-assessed (scope/time/cost/risk) before approval.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: تسلسل ذهبي: وثّق الطلب ← قيّم الأثر ← اعرضه على CCB ← نفّذ ← حدّث الوثائق وبلّغ.</span><span class="en">⭐ Exam: golden sequence: document → assess impact → CCB → implement → update docs &amp; communicate.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">4</span><span class="ar">إزالة العوائق وإدارة المشكلات</span><span class="en">Remove impediments and manage issues</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تقييم أثر العوائق وترتيبها، استراتيجية تدخل لإزالتها، إعادة تقييم مستمرة، تمييز لحظة تحول الخطر لمشكلة، وحلها بالتعاون مع أصحاب المصلحة.</span><span class="en">Assess &amp; prioritize impediments, apply an intervention strategy, reassess continually, recognize when a risk becomes an issue, and resolve collaboratively.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Risk</span><span class="chip fa"><span class="ar">تركيز: التنفيذ</span><span class="en">Focus: Executing</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: خطر "تأخر ترخيص" اتحقق فعلًا → ينتقل من سجل المخاطر لسجل المشكلات (Issue Log) وتُفعَّل خطة الاستجابة.</span><span class="en">💼 Example: the "license delay" risk materialized → it moves from the risk register to the issue log and the response plan activates.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: خطر = لسه محصلش (احتمال)؛ مشكلة = حصل بالفعل (واقع). الخلط بينهم فخ متكرر.</span><span class="en">⭐ Exam: risk = hasn't happened (probability); issue = already happened (fact). Mixing them is a classic trap.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">5</span><span class="ar">تخطيط وإدارة المخاطر</span><span class="en">Plan and manage risk</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تحديد وتحليل ومراقبة المخاطر، خطة إدارة مخاطر، سجل مخاطر محدث (مثال: ضعف أمن تقنية المعلومات)، تنفيذ الاستجابات، وإيصال حالة أثر الخطر.</span><span class="en">Identify, analyze, monitor &amp; control risks; a risk management plan; a live risk register (e.g., poor IT security); execute responses; communicate risk impact status.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Risk</span><span class="chip pr"><span class="ar">مبدأ: استدامة</span><span class="en">Principle: Sustainability</span></span></div>
+        <div class="ex"><span class="ar">💼 مثال: خطر أمني عالي الاحتمال والأثر → استجابة "تخفيف": اختبار اختراق، تشفير، وخطة طوارئ مع Trigger واضح.</span><span class="en">💼 Example: a high-probability/high-impact security risk → mitigation: penetration testing, encryption, and a contingency plan with a clear trigger.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: استجابات التهديد: تجنّب/نقل/تخفيف/قبول — والفرص: استغلال/مشاركة/تعزيز/قبول.</span><span class="en">⭐ Exam: threat responses: avoid/transfer/mitigate/accept — opportunities: exploit/share/enhance/accept.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">6</span><span class="ar">التحسين المستمر</span><span class="en">Continuous improvement</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">استخدام الدروس المستفادة، تحديث عمليات التحسين المستمر، وتحديث أصول العمليات التنظيمية (OPAs).</span><span class="en">Utilize lessons learned, keep continuous-improvement processes updated, and update OPAs.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Governance</span><span class="chip fa">Retrospectives</span></div>
+        <div class="ex"><span class="ar">💼 مثال: Retrospective كل Sprint تنتج تحسينًا واحدًا قابلًا للتنفيذ فورًا — مش قائمة أمنيات طويلة.</span><span class="en">💼 Example: every sprint retrospective yields one immediately actionable improvement — not a long wish list.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: الدروس المستفادة تُجمع طوال المشروع — مش في الإغلاق فقط.</span><span class="en">⭐ Exam: lessons learned are captured throughout — not only at closure.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">7</span><span class="ar">دعم التغيير التنظيمي</span><span class="en">Support organizational change</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">تقييم الثقافة التنظيمية، وتقييم أثر التغيير التنظيمي على المشروع وتحديد الإجراءات اللازمة.</span><span class="en">Assess organizational culture; evaluate the impact of organizational change on the project and determine required actions.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Governance + Stakeholders</span></div>
+        <div class="ex"><span class="ar">💼 مثال: اندماج شركتين أثناء المشروع → راعٍ جديد وأولويات جديدة؛ المدير يعيد تقييم أصحاب المصلحة ويحدّث خطة الإشراك والخطة المتكاملة.</span><span class="en">💼 Example: a merger mid-project → new sponsor, new priorities; the PM reassesses stakeholders and updates engagement and integrated plans.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: تغيير تنظيمي = قيّم الأثر أولًا، متكملش تنفيذ كأن شيئًا لم يحدث.</span><span class="en">⭐ Exam: organizational change = assess impact first; don't keep executing as if nothing happened.</span></div>
+      </div>
+    </details>
+
+    <details class="task"><summary><span class="t-num">8</span><span class="ar">تقييم تغيّرات بيئة الأعمال الخارجية</span><span class="en">Evaluate external business environment changes</span><span class="t-arrow">◀</span></summary>
+      <div class="t-body">
+        <p><span class="ar">رصد التغيرات الخارجية (لوائح، تقنية، جيوسياسية، سوق)، وتقييم وترتيب أثرها على النطاق/الـ Backlog، والمراجعة المستمرة.</span><span class="en">Survey external changes (regulations, technology, geopolitical, market), assess &amp; prioritize their impact on scope/backlog, and review continually.</span></p>
+        <div class="row"><span class="chip pd">PMBOK: Risk + Scope</span><span class="chip fa">PESTLE</span></div>
+        <div class="ex"><span class="ar">💼 مثال: لائحة حماية بيانات جديدة صدرت أثناء المشروع → عناصر Backlog جديدة إلزامية تترتب فوق الميزات التجارية.</span><span class="en">💼 Example: a new data-protection regulation issued mid-project → new mandatory backlog items ranked above commercial features.</span></div>
+        <div class="tip"><span class="ar">⭐ في الاختبار: تغيّر خارجي (لائحة/تقنية) = قيّم أثره على النطاق والمخاطر — مش تجاهله لأنه "بره المشروع".</span><span class="en">⭐ Exam: an external shift (regulation/technology) = assess its scope &amp; risk impact — never ignore it as "outside the project."</span></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ======= MAPPING MATRIX ======= -->
+<section id="mapping">
+  <div class="sec-head">
+    <div class="kicker"><span class="ar">الربط الذكي</span><span class="en">Smart Linking</span></div>
+    <h2><span class="ar">مصفوفة الربط: ECO × PMBOK 8</span><span class="en">The Mapping Matrix: ECO × PMBOK 8</span></h2>
+    <p><span class="ar">لكل مجال في الاختبار، دي مجالات الأداء والمبادئ اللي هتذاكر منها المعرفة.</span><span class="en">For each exam domain, these are the performance domains and principles that supply the knowledge.</span></p>
+  </div>
+  <div class="table-scroll">
+    <table class="map-table">
+      <thead>
+        <tr>
+          <th><span class="ar">مجال ECO</span><span class="en">ECO Domain</span></th>
+          <th><span class="ar">مجالات أداء PMBOK الأساسية</span><span class="en">Primary PMBOK Performance Domains</span></th>
+          <th><span class="ar">المبادئ الأكثر ارتباطًا</span><span class="en">Most-Related Principles</span></th>
+          <th><span class="ar">مناطق التركيز الغالبة</span><span class="en">Dominant Focus Areas</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b style="color:#6C4AB6"><span class="ar">الأشخاص 33%</span><span class="en">People 33%</span></b></td>
+          <td><span class="ar">أصحاب المصلحة · الموارد</span><span class="en">Stakeholders · Resources</span></td>
+          <td><span class="ar">قائد مسؤول · ثقافة ممكّنة · القيمة</span><span class="en">Accountable Leader · Empowered Culture · Value</span></td>
+          <td><span class="ar">التنفيذ · التخطيط</span><span class="en">Executing · Planning</span></td>
+        </tr>
+        <tr>
+          <td><b style="color:#A5821B"><span class="ar">العمليات 41%</span><span class="en">Process 41%</span></b></td>
+          <td><span class="ar">النطاق · الجدول · التمويل · الموارد · الحوكمة</span><span class="en">Scope · Schedule · Finance · Resources · Governance</span></td>
+          <td><span class="ar">جودة مدمجة · نظرة شمولية · القيمة</span><span class="en">Embedded Quality · Holistic View · Value</span></td>
+          <td><span class="ar">التخطيط · المراقبة والتحكم · الإغلاق</span><span class="en">Planning · Monitoring &amp; Controlling · Closing</span></td>
+        </tr>
+        <tr>
+          <td><b style="color:#0E7C7B"><span class="ar">بيئة الأعمال 26%</span><span class="en">Business Env. 26%</span></b></td>
+          <td><span class="ar">الحوكمة · المخاطر</span><span class="en">Governance · Risk</span></td>
+          <td><span class="ar">الاستدامة · نظرة شمولية · قائد مسؤول</span><span class="en">Sustainability · Holistic View · Accountable Leader</span></td>
+          <td><span class="ar">البدء · المراقبة والتحكم</span><span class="en">Initiating · Monitoring &amp; Controlling</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ======= CASE STUDY ======= -->
+<section id="case">
+  <div class="sec-head">
+    <div class="kicker"><span class="ar">تدريب على النوع الجديد</span><span class="en">Practicing the New Type</span></div>
+    <h2><span class="ar">حالة عملية بأسلوب الاختبار (Case / Scenario)</span><span class="en">An Exam-Style Case / Scenario</span></h2>
+  </div>
+  <div class="case">
+    <h3><span class="ar">📋 السيناريو: منصة "صحتي الذكية"</span><span class="en">📋 Scenario: The "Smart Health" Platform</span></h3>
+    <p>
+      <span class="ar">شركة تقنية صحية بتطور منصة لمتابعة المرضى عن بُعد. الميزانية 2 مليون، والمدة 10 شهور. الفريق: مطورون (رشيق)، وفريق أجهزة طبية (تنبؤي — بسبب اشتراطات الترخيص). بعد 4 شهور: صدرت لائحة جديدة لخصوصية البيانات الصحية، الراعي طلب ميزة ذكاء اصطناعي إضافية شفهيًا، وقياس رضا العملاء التجريبيين انخفض من 82% إلى 61%، وCPI الحالي = 0.90.</span>
+      <span class="en">A health-tech company is building a remote patient-monitoring platform. Budget: 2M; duration: 10 months. Teams: software (agile) and medical devices (predictive — licensing constraints). At month 4: a new health-data privacy regulation was issued, the sponsor verbally requested an extra AI feature, pilot-customer satisfaction dropped from 82% to 61%, and current CPI = 0.90.</span>
+    </p>
+    <div class="q-list">
+      <div class="q-item"><b><span class="ar">فكّر ①</span><span class="en">Think ①</span></b> — <span class="ar">اللائحة الجديدة: مهمة "تقييم بيئة الأعمال الخارجية" (المجال III) → قيّم الأثر على النطاق/الـ Backlog وأضفها كمتطلب امتثال إلزامي.</span><span class="en">The new regulation: "evaluate external environment" task (Domain III) → assess scope/backlog impact and add it as a mandatory compliance requirement.</span></div>
+      <div class="q-item"><b><span class="ar">فكّر ②</span><span class="en">Think ②</span></b> — <span class="ar">طلب الراعي الشفهي: حتى لو من الراعي → وثّقه، قيّم أثره، ومرّره عبر التحكم في التغيير (مش تنفيذ فوري ولا رفض).</span><span class="en">The sponsor's verbal request: even from the sponsor → document, assess impact, route through change control (neither instant execution nor refusal).</span></div>
+      <div class="q-item"><b><span class="ar">فكّر ③</span><span class="en">Think ③</span></b> — <span class="ar">انخفاض الرضا: مهمة "إدارة توقعات أصحاب المصلحة" → حلّل السبب مع العملاء التجريبيين وعدّل الأولويات، متستناش نهاية المشروع.</span><span class="en">The satisfaction drop: "manage stakeholder expectations" → analyze causes with pilot customers and adjust priorities; don't wait for project end.</span></div>
+      <div class="q-item"><b><span class="ar">فكّر ④</span><span class="en">Think ④</span></b> — <span class="ar">CPI = 0.90: تجاوز في التكلفة → حلّل الجذور، وقارن بعتبات الحوكمة قبل التصعيد للجنة التوجيهية.</span><span class="en">CPI = 0.90: over budget → root-cause it and compare against governance thresholds before escalating to the steering committee.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= QUIZ ======= -->
+<section id="quiz">
+  <div class="sec-head">
+    <div class="kicker"><span class="ar">اختبر نفسك</span><span class="en">Test Yourself</span></div>
+    <h2><span class="ar">8 أسئلة تدريبية بعقلية 2026 — اضغط الإجابة</span><span class="en">8 Practice Questions with a 2026 Mindset — Tap an Answer</span></h2>
+  </div>
+
+  <div class="q-card" data-answer="2">
+    <span class="q-dom" style="color:#6C4AB6"><span class="ar">المجال I — الأشخاص</span><span class="en">Domain I — People</span></span>
+    <h4><span class="ar">عضوان في فريق رشيق يختلفان بحدة على تصميم تقني، والخلاف بدأ يؤثر على الـ Sprint. ما أفضل تصرف لمدير المشروع؟</span><span class="en">Two agile team members strongly disagree on a technical design, and it's starting to affect the sprint. What should the PM do first?</span></h4>
+    <div class="opts">
+      <button class="opt"><span class="ar">أ) يفرض التصميم الذي يراه أفضل لإنهاء الخلاف بسرعة</span><span class="en">A) Impose the design they think is best to end it quickly</span></button>
+      <button class="opt"><span class="ar">ب) ينقل أحد العضوين لفريق آخر</span><span class="en">B) Move one member to another team</span></button>
+      <button class="opt"><span class="ar">ج) ييسّر جلسة يحلل فيها الطرفان سياق الخلاف ويصلان لحل تعاوني</span><span class="en">C) Facilitate a session where both analyze the conflict context and reach a collaborative solution</span></button>
+      <button class="opt"><span class="ar">د) يصعّد الموضوع فورًا للراعي</span><span class="en">D) Escalate immediately to the sponsor</span></button>
+    </div>
+    <div class="rationale"><span class="ar">✅ (ج): إدارة النزاع تبدأ بتحليل المصدر والسياق ثم حل تعاوني (Collaborate). الفرض والنقل والتصعيد الفوري كلها تتجاوز الفريق وتضعف الثقافة الممكّنة.</span><span class="en">✅ (C): conflict management starts by analyzing source &amp; context, then collaborating. Forcing, reassigning, or instant escalation bypass the team and weaken the empowered culture.</span></div>
+  </div>
+
+  <div class="q-card" data-answer="1">
+    <span class="q-dom" style="color:#6C4AB6"><span class="ar">المجال I — الأشخاص</span><span class="en">Domain I — People</span></span>
+    <h4><span class="ar">خبير رئيسي في الفريق قدّم استقالته وسيغادر بعد 6 أسابيع. ما أول ما يفعله مدير المشروع؟</span><span class="en">A key expert resigned and will leave in 6 weeks. What should the PM do first?</span></h4>
+    <div class="opts">
+      <button class="opt"><span class="ar">أ) يطلب من الموارد البشرية بديلًا بنفس الخبرة</span><span class="en">A) Ask HR for an equally experienced replacement</span></button>
+      <button class="opt"><span class="ar">ب) يحدد المعرفة الحرجة لديه ويبدأ خطة نقل معرفة فورًا</span><span class="en">B) Identify their critical knowledge and start a knowledge-transfer plan immediately</span></button>
+      <button class="opt"><span class="ar">ج) يضيف الخطر لسجل المخاطر وينتظر</span><span class="en">C) Log the risk in the register and wait</span></button>
+      <button class="opt"><span class="ar">د) يعيد توزيع مهامه على باقي الفريق</span><span class="en">D) Redistribute their tasks across the team</span></button>
+    </div>
+    <div class="rationale"><span class="ar">✅ (ب): مهمة ECO صريحة "ضمان نقل المعرفة": حدد المعرفة الحرجة ← اجمعها ← هيّئ بيئة نقل. البديل والتوزيع خطوات لاحقة، والانتظار خسارة معرفة مؤكدة.</span><span class="en">✅ (B): an explicit ECO task — "ensure knowledge transfer": identify critical knowledge → gather → foster transfer. Replacement and redistribution come later; waiting guarantees knowledge loss.</span></div>
+  </div>
+
+  <div class="q-card" data-answer="2">
+    <span class="q-dom" style="color:#A5821B"><span class="ar">المجال II — العمليات</span><span class="en">Domain II — Process</span></span>
+    <h4><span class="ar">مشروع متطلباته الأساسية ثابتة بموجب عقد حكومي، لكن واجهة المستخدم تحتاج تجريبًا مستمرًا مع المستفيدين. ما المنهج الأنسب؟</span><span class="en">Core requirements are fixed under a government contract, but the UI needs continuous experimentation with users. Which approach fits best?</span></h4>
+    <div class="opts">
+      <button class="opt"><span class="ar">أ) تنبؤي بالكامل لضمان الالتزام بالعقد</span><span class="en">A) Fully predictive to guarantee contract compliance</span></button>
+      <button class="opt"><span class="ar">ب) رشيق بالكامل لتسريع التسليم</span><span class="en">B) Fully agile to speed delivery</span></button>
+      <button class="opt"><span class="ar">ج) هجين: تنبؤي للمتطلبات التعاقدية الثابتة ورشيق لواجهة المستخدم</span><span class="en">C) Hybrid: predictive for the fixed contractual scope, agile for the UI</span></button>
+      <button class="opt"><span class="ar">د) يترك القرار لكل فريق على حدة بدون توثيق</span><span class="en">D) Let each team decide informally without documenting</span></button>
+    </div>
+    <div class="rationale"><span class="ar">✅ (ج): اختيار المنهج مهمة أساسية في خطة الإدارة المتكاملة، ويُبنى على طبيعة المخرجات — الثابت تنبؤي والمتغير رشيق = هجين موثّق. تذكّر: 60% من الاختبار رشيق وهجين.</span><span class="en">✅ (C): approach selection is core to the integrated plan and is driven by deliverable nature — fixed = predictive, evolving = agile → a documented hybrid. Remember: 60% of the exam is agile &amp; hybrid.</span></div>
+  </div>
+
+  <div class="q-card" data-answer="0">
+    <span class="q-dom" style="color:#A5821B"><span class="ar">المجال II — العمليات</span><span class="en">Domain II — Process</span></span>
+    <h4><span class="ar">SPI = 1.05 وCPI = 0.88. ما التفسير الصحيح لوضع المشروع؟</span><span class="en">SPI = 1.05 and CPI = 0.88. What is the correct interpretation?</span></h4>
+    <div class="opts">
+      <button class="opt"><span class="ar">أ) متقدم عن الجدول ومتجاوز للميزانية</span><span class="en">A) Ahead of schedule and over budget</span></button>
+      <button class="opt"><span class="ar">ب) متأخر عن الجدول وموفّر في الميزانية</span><span class="en">B) Behind schedule and under budget</span></button>
+      <button class="opt"><span class="ar">ج) متقدم في الاثنين</span><span class="en">C) Ahead on both</span></button>
+      <button class="opt"><span class="ar">د) متأخر في الاثنين</span><span class="en">D) Behind on both</span></button>
+    </div>
+    <div class="rationale"><span class="ar">✅ (أ): أكبر من 1 = كويس، أقل من 1 = مشكلة. SPI 1.05 متقدم زمنيًا، CPI 0.88 يعني كل وحدة إنفاق بترجّع 0.88 قيمة فقط → تجاوز في التكلفة. توقع أسئلة رسومية على EVM في نسخة 2026.</span><span class="en">✅ (A): above 1 = good, below 1 = trouble. SPI 1.05 = ahead; CPI 0.88 = each unit spent earns only 0.88 → over budget. Expect graphic-based EVM questions in the 2026 exam.</span></div>
+  </div>
+
+  <div class="q-card" data-answer="3">
+    <span class="q-dom" style="color:#A5821B"><span class="ar">المجال II — العمليات</span><span class="en">Domain II — Process</span></span>
+    <h4><span class="ar">عيوب الجودة بتظهر بكثرة في الفحص النهائي قبل التسليم. ما التصرف الأكثر توافقًا مع مبادئ PMBOK 8؟</span><span class="en">Quality defects keep appearing at final inspection before delivery. Which action best matches PMBOK 8 principles?</span></h4>
+    <div class="opts">
+      <button class="opt"><span class="ar">أ) زيادة عدد المفتشين في الفحص النهائي</span><span class="en">A) Add more inspectors at final inspection</span></button>
+      <button class="opt"><span class="ar">ب) تشديد العقوبات على الفريق</span><span class="en">B) Penalize the team more strictly</span></button>
+      <button class="opt"><span class="ar">ج) قبول العيوب البسيطة لتسليم أسرع</span><span class="en">C) Accept minor defects to deliver faster</span></button>
+      <button class="opt"><span class="ar">د) دمج مراجعات جودة مبكرة داخل عملية التطوير نفسها</span><span class="en">D) Embed early quality reviews inside the development process itself</span></button>
+    </div>
+    <div class="rationale"><span class="ar">✅ (د): مبدأ "ادمج الجودة في العمليات والمخرجات" — الوقاية أرخص وأفعل من الفحص، وتكلفة الفشل الخارجي هي الأغلى في سلسلة CoQ.</span><span class="en">✅ (D): the "Embed Quality" principle — prevention beats inspection, and external failure is the costliest link in the CoQ chain.</span></div>
+  </div>
+
+  <div class="q-card" data-answer="1">
+    <span class="q-dom" style="color:#0E7C7B"><span class="ar">المجال III — بيئة الأعمال</span><span class="en">Domain III — Business Environment</span></span>
+    <h4><span class="ar">صدر تحديث تنظيمي جديد أثناء التنفيذ يفرض متطلبات إضافية على المنتج. ما أول خطوة صحيحة؟</span><span class="en">A new regulatory update issued mid-execution imposes extra product requirements. What's the correct first step?</span></h4>
+    <div class="opts">
+      <button class="opt"><span class="ar">أ) الاستمرار في الخطة الحالية لأن العقد وُقّع قبل اللائحة</span><span class="en">A) Continue the current plan since the contract predates the regulation</span></button>
+      <button class="opt"><span class="ar">ب) تقييم أثر اللائحة على النطاق والمخاطر وتصنيفها كمتطلب امتثال</span><span class="en">B) Assess the regulation's impact on scope &amp; risk and classify it as a compliance requirement</span></button>
+      <button class="opt"><span class="ar">ج) طلب استثناء من الجهة المنظمة</span><span class="en">C) Request an exemption from the regulator</span></button>
+      <button class="opt"><span class="ar">د) إيقاف المشروع حتى صدور توضيحات</span><span class="en">D) Pause the project until clarifications are issued</span></button>
+    </div>
+    <div class="rationale"><span class="ar">✅ (ب): مهمتا "تقييم بيئة الأعمال الخارجية" و"إدارة الامتثال" — الامتثال إلزامي ويقيَّم أثره فورًا على النطاق/الـ Backlog، والإيقاف أو التجاهل مخاطرة قانونية.</span><span class="en">✅ (B): the "external environment" and "compliance" tasks — compliance is mandatory; its impact is assessed immediately on scope/backlog. Ignoring or pausing is a legal risk.</span></div>
+  </div>
+
+  <div class="q-card" data-answer="0">
+    <span class="q-dom" style="color:#0E7C7B"><span class="ar">المجال III — بيئة الأعمال</span><span class="en">Domain III — Business Environment</span></span>
+    <h4><span class="ar">خطر مسجل في السجل "احتمال انسحاب مورد رئيسي" حدث بالفعل هذا الأسبوع. ماذا يحدث الآن؟</span><span class="en">A registered risk — "key vendor may withdraw" — actually happened this week. What happens now?</span></h4>
+    <div class="opts">
+      <button class="opt"><span class="ar">أ) أصبح مشكلة (Issue): يُسجل في سجل المشكلات وتُفعَّل خطة الاستجابة/الطوارئ</span><span class="en">A) It's now an issue: log it in the issue log and activate the response/contingency plan</span></button>
+      <button class="opt"><span class="ar">ب) يبقى خطرًا لكن ترتفع درجته في السجل</span><span class="en">B) It stays a risk but its score increases</span></button>
+      <button class="opt"><span class="ar">ج) يُغلق الخطر ويُحذف من السجل</span><span class="en">C) Close the risk and delete it from the register</span></button>
+      <button class="opt"><span class="ar">د) يُضاف لاحتياطي الإدارة</span><span class="en">D) Add it to the management reserve</span></button>
+    </div>
+    <div class="rationale"><span class="ar">✅ (أ): مهمة ECO صريحة: "تمييز متى يتحول الخطر لمشكلة". خطر تحقق = مشكلة واقعة تُدار من سجل المشكلات بخطة الاستجابة المجهزة مسبقًا.</span><span class="en">✅ (A): an explicit ECO enabler: "recognize when a risk becomes an issue." A materialized risk = a live issue managed from the issue log using the pre-planned response.</span></div>
+  </div>
+
+  <div class="q-card" data-answer="2">
+    <span class="q-dom" style="color:#0E7C7B"><span class="ar">المجال III — بيئة الأعمال</span><span class="en">Domain III — Business Environment</span></span>
+    <h4><span class="ar">الراعي طلب شفهيًا إضافة وحدة كاملة جديدة "لأنها فرصة سوقية". ما التصرف الصحيح؟</span><span class="en">The sponsor verbally requests adding a whole new module "because it's a market opportunity." What's the right move?</span></h4>
+    <div class="opts">
+      <button class="opt"><span class="ar">أ) التنفيذ فورًا — الراعي هو صاحب التمويل</span><span class="en">A) Execute immediately — the sponsor funds the project</span></button>
+      <button class="opt"><span class="ar">ب) الرفض — الخطة معتمدة ولا مجال للتغيير</span><span class="en">B) Refuse — the plan is baselined and can't change</span></button>
+      <button class="opt"><span class="ar">ج) توثيق الطلب وتقييم الأثر ثم عرضه على عملية التحكم في التغيير</span><span class="en">C) Document the request, assess impact, and route it through change control</span></button>
+      <button class="opt"><span class="ar">د) إضافته لقائمة الأمنيات لمرحلة لاحقة دون تقييم</span><span class="en">D) Park it on a wish list for a later phase without assessment</span></button>
+    </div>
+    <div class="rationale"><span class="ar">✅ (ج): التحكم في التغيير يسري على الجميع — حتى الراعي. التسلسل: وثّق ← قيّم (نطاق/وقت/تكلفة/مخاطر/قيمة) ← قرار رسمي ← نفّذ وحدّث الوثائق.</span><span class="en">✅ (C): change control applies to everyone — including the sponsor. Sequence: document → assess (scope/time/cost/risk/value) → formal decision → implement &amp; update docs.</span></div>
+  </div>
+
+  <div class="score-pill"><span class="ar">نتيجتك: </span><span class="en">Your score: </span><b id="score">0</b> / 8</div>
+</section>
+
+<!-- ======= GOLDEN TIPS ======= -->
+<section id="tips">
+  <div class="sec-head">
+    <div class="kicker"><span class="ar">قبل ما تدخل القاعة</span><span class="en">Before You Enter the Exam Room</span></div>
+    <h2><span class="ar">10 قواعد ذهبية لعقلية إجابة PMP 2026</span><span class="en">10 Golden Rules for the PMP 2026 Answering Mindset</span></h2>
+  </div>
+  <div class="gold-list">
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>قيّم قبل ما تتصرف:</b> أي حدث مفاجئ (تغيير، لائحة، خطر) — الإجابة الصحيحة غالبًا تبدأ بـ "Assess / Analyze".</span><span class="en"><b>Assess before acting:</b> for any surprise (change, regulation, risk) the correct answer usually starts with "assess/analyze."</span></div></div>
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>القيمة أولًا:</b> لو الخيارات فيها "قيمة مبكرة للمستفيد" فهي مرشح قوي — تعريف النجاح 2026 قائم على القيمة مقابل الجهد والتكلفة.</span><span class="en"><b>Value first:</b> an option delivering "early value to users" is a strong candidate — 2026 success = value worth the effort and expense.</span></div></div>
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>مكّن الفريق:</b> "القرار مع الفريق/التيسير" يتفوق على "المدير يقرر بمفرده" — خصوصًا في السياق الرشيق.</span><span class="en"><b>Empower the team:</b> "team decides / facilitate" beats "PM decides alone" — especially in agile contexts.</span></div></div>
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>التصعيد آخر الحلول:</b> بعد ما تستنفد صلاحياتك وتتخطى عتبات الحوكمة الموثقة.</span><span class="en"><b>Escalation is the last resort:</b> only after exhausting your authority and crossing documented governance thresholds.</span></div></div>
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>الامتثال غير قابل للتفاوض:</b> اللوائح والأمن والصحة والسلامة والاستدامة لا تدخل مقايضات التكلفة.</span><span class="en"><b>Compliance is non-negotiable:</b> regulations, security, H&amp;S, and sustainability don't enter cost trade-offs.</span></div></div>
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>لا تغيير بدون عملية:</b> وثّق ← قيّم ← اعتمد ← نفّذ ← حدّث — حتى مع الراعي.</span><span class="en"><b>No change without process:</b> document → assess → approve → implement → update — even for the sponsor.</span></div></div>
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>خطر ≠ مشكلة:</b> الخطر احتمال والمشكلة واقع — وسجل لكل منهما.</span><span class="en"><b>Risk ≠ Issue:</b> a risk is a probability, an issue is a fact — each has its own log.</span></div></div>
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>الاستدامة حاضرة:</b> مبدأ جديد كامل في PMBOK 8 واتجاه معتمد في JTA — توقعها في الجودة والمخاطر والتخطيط.</span><span class="en"><b>Sustainability is present:</b> a full new PMBOK 8 principle and a validated JTA trend — expect it in quality, risk, and planning.</span></div></div>
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>أدر وقت الحالة الدراسية:</b> الاستراحة الأولى بعد قسم الحالة — راجع إجاباتك قبلها لأنك مش هترجع.</span><span class="en"><b>Manage case-study time:</b> the first break follows the case section — review before it, you can't return.</span></div></div>
+    <div class="gold-item"><span class="star">★</span><div><span class="ar"><b>اقرأ "أول / أفضل / التالي":</b> كلمة السؤال المفتاحية بتغير الإجابة الصحيحة تمامًا.</span><span class="en"><b>Read "first / best / next":</b> the question's keyword completely changes the correct answer.</span></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="sig">إعداد وتصميم وبرمجة د. محمد عطية</div>
+  <div><span class="ar">ملخص تعليمي يجمع بين مهام PMP® ECO (يوليو 2026) ومعرفة PMBOK® Guide الإصدار الثامن — لأغراض التدريب والمراجعة.</span><span class="en">An educational summary linking the PMP® ECO (July 2026) tasks with PMBOK® Guide 8th Edition knowledge — for training and revision purposes.</span></div>
+  <div style="margin-top:6px;font-size:.75rem;opacity:.7">PMP®, PMI®, PMBOK® are registered marks of the Project Management Institute, Inc.</div>
+</footer>
+
+<script>
+function toggleLang(){
+  const b=document.body;
+  const to = b.dataset.lang==='ar' ? 'en' : 'ar';
+  b.dataset.lang=to;
+  document.documentElement.lang=to;
+  document.documentElement.dir = to==='ar' ? 'rtl' : 'ltr';
+}
+/* quiz */
+let score=0, answeredCount=0;
+document.querySelectorAll('.q-card').forEach(card=>{
+  const correct=+card.dataset.answer;
+  card.querySelectorAll('.opt').forEach((btn,i)=>{
+    btn.addEventListener('click',()=>{
+      if(card.classList.contains('answered'))return;
+      card.classList.add('answered');
+      answeredCount++;
+      if(i===correct){btn.classList.add('correct');score++;}
+      else{btn.classList.add('wrong');card.querySelectorAll('.opt')[correct].classList.add('correct');}
+      document.getElementById('score').textContent=score;
+    });
+  });
+});
+</script>
+</body>
+</html>
